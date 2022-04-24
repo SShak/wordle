@@ -5,6 +5,7 @@ import { boardDefault, generateWordSet } from "./Words";
 import React, { useState, createContext, useEffect } from "react";
 import GameOver from "./components/GameOver";
 
+
 export const AppContext = createContext();
 
 function App() {
@@ -19,12 +20,17 @@ function App() {
     guessedWord: false,
   });
 
+  // const correctWord = "RIGHT"
+
   useEffect(() => {
     generateWordSet().then((words) => {
       setWordSet(words.wordSet);
       setCorrectWord(words.todaysWord);
+      console.log(words.todaysWord)
     });
   }, []);
+
+ 
 
   const onSelectLetter = (key) => {
     if (currAttempt.letter > 4) return;
@@ -44,6 +50,7 @@ function App() {
     for (let i = 0; i < 5; i++) {
       currWord += board[currAttempt.attempt][i];
     }
+
     if (wordSet.has(currWord.toLowerCase())) {
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letter: 0 });
     } else {
@@ -51,10 +58,10 @@ function App() {
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letter: 0 });
     }
 
-    if (currWord === correctWord) {
+    if (currWord.toLowerCase() === correctWord) {
       setGameOver({ gameOver: true, guessedWord: true });
-      return;
-    }
+      return (gameOver);
+    } 
 
     if (currAttempt.attempt === 5) {
       setGameOver({ gameOver: true, guessedWord: false });
