@@ -40,9 +40,11 @@ function Keyboard() {
           }
         });
       }
+      
     },
-    [currAttempt]
-  );
+    // eslint-disable-next-line
+    [currAttempt] 
+    );
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyboard);
