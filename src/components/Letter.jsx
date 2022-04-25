@@ -17,7 +17,10 @@ function Letter({ letterPos, attemptVal }) {
     if (letter !== "" && !correct && !almost) {
       setDisabledLetters((prev) => [...prev, letter]);
     }
-  }, [currAttempt.attempt]);
+  },
+  // eslint-disable-next-line 
+  [currAttempt.attempt]
+  );
 
   return (
     <div className="letter" id={letterState}>
