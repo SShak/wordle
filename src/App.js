@@ -101,6 +101,7 @@ function App() {
         <div className="game">
           <Board />
           {gameOver.gameOver ? <GameOver /> : <Keyboard />}
+          
         </div>
       </AppContext.Provider>
     </div>
